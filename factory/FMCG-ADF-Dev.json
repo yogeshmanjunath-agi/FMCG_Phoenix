@@ -1,0 +1,9 @@
+{
+	"name": "FMCG-ADF-Dev",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "82e09ea7-a6e9-4301-9031-6d76b02df540",
+		"tenantId": "e03d0531-3a67-4ce7-a925-85a50e991de5"
+	}
+}
