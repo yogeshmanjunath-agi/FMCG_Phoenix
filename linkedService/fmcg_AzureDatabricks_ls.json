@@ -1,0 +1,17 @@
+{
+	"name": "fmcg_AzureDatabricks_ls",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-3443455040470546.6.azuredatabricks.net",
+			"authentication": "MSI",
+			"workspaceResourceId": "/subscriptions/6b9295de-5989-427f-89e5-2a0e78d8419a/resourceGroups/FMCG-Dev-Environment/providers/Microsoft.Databricks/workspaces/FMCG-AzureDatabricks-dev",
+			"existingClusterId": "1214-074245-pvr1tl72"
+		},
+		"connectVia": {
+			"referenceName": "FMCGSHIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
