@@ -1,0 +1,10 @@
+{
+	"name": "fmcg_AzureKeyVault_ls",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://fmcgdevkeyvault01.vault.azure.net/"
+		}
+	}
+}
