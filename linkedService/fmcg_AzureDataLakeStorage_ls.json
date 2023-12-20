@@ -1,0 +1,14 @@
+{
+	"name": "fmcg_AzureDataLakeStorage_ls",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://fmcgadlsgen2dev.dfs.core.windows.net/"
+		},
+		"connectVia": {
+			"referenceName": "FMCGSHIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
