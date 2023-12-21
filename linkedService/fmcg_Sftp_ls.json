@@ -1,6 +1,5 @@
 {
 	"name": "fmcg_Sftp_ls",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "Sftp",
@@ -10,11 +9,19 @@
 			"skipHostKeyValidation": true,
 			"authenticationType": "Basic",
 			"userName": "yogesh.manjunath92@gmail.com",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI5YTU2MjFlOC1kNWY3LTQxNDEtYmQzMS1iNmJkMTVlZDI1ZjYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "fmcg_AzureKeyVault_ls",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sftp-pswd"
+			}
 		},
 		"connectVia": {
 			"referenceName": "FMCGSHIR",
 			"type": "IntegrationRuntimeReference"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
 }
