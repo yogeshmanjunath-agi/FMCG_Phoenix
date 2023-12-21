@@ -1,18 +1,39 @@
 {
 	"name": "fmcg_SqlServer_ls",
 	"properties": {
+		"parameters": {
+			"server_name": {
+				"type": "string",
+				"defaultValue": "DESKTOP-MS0L0Q3\\SQLEXPRESS"
+			},
+			"database_name": {
+				"type": "string",
+				"defaultValue": "master"
+			},
+			"user_name": {
+				"type": "string",
+				"defaultValue": "yogesh.manjunath92@gmail.com"
+			},
+			"secret_name": {
+				"type": "string",
+				"defaultValue": "sqlserver-pswd"
+			}
+		},
 		"annotations": [],
 		"type": "SqlServer",
 		"typeProperties": {
-			"connectionString": "Integrated Security=True;Data Source=DESKTOP-MS0L0Q3\\SQLEXPRESS;Initial Catalog=master",
-			"userName": "yogesh.manjunath92@gmail.com",
+			"connectionString": "Integrated Security=True;Data Source=@{linkedService().server_name};Initial Catalog=@{linkedService().database_name}",
+			"userName": "@{linkedService().user_name}",
 			"password": {
 				"type": "AzureKeyVaultSecret",
 				"store": {
 					"referenceName": "fmcg_AzureKeyVault_ls",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "sqlserver-pswd"
+				"secretName": {
+					"value": "@linkedService().secret_name",
+					"type": "Expression"
+				}
 			}
 		},
 		"connectVia": {
