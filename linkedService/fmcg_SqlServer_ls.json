@@ -1,17 +1,24 @@
 {
 	"name": "fmcg_SqlServer_ls",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "SqlServer",
 		"typeProperties": {
-			"connectionString": "integrated security=True;data source=DESKTOP-MS0L0Q3\\SQLEXPRESS;initial catalog=master",
+			"connectionString": "Integrated Security=True;Data Source=DESKTOP-MS0L0Q3\\SQLEXPRESS;Initial Catalog=master",
 			"userName": "yogesh.manjunath92@gmail.com",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3NzkwYWNmYi1iZjc1LTQ3NGUtYTRhNi05Y2UzNzdmMGZhYTUiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "fmcg_AzureKeyVault_ls",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sqlserver-pswd"
+			}
 		},
 		"connectVia": {
 			"referenceName": "FMCGSHIR",
 			"type": "IntegrationRuntimeReference"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
 }
