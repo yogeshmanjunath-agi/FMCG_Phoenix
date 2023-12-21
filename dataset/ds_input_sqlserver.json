@@ -1,0 +1,52 @@
+{
+	"name": "ds_input_sqlserver",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "fmcg_SqlServer_ls",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"server_name": {
+					"value": "@dataset().server_name",
+					"type": "Expression"
+				},
+				"database_name": {
+					"value": "@dataset().database_name",
+					"type": "Expression"
+				},
+				"user_name": {
+					"value": "@dataset().user_name",
+					"type": "Expression"
+				},
+				"secret_name": {
+					"value": "@dataset().secret_name",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"server_name": {
+				"type": "string",
+				"defaultValue": "DESKTOP-MS0L0Q3\\SQLEXPRESS"
+			},
+			"database_name": {
+				"type": "string",
+				"defaultValue": "master"
+			},
+			"user_name": {
+				"type": "string",
+				"defaultValue": "yogesh.manjunath92@gmail.com"
+			},
+			"secret_name": {
+				"type": "string",
+				"defaultValue": "sqlserver-pswd"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "fact_ts_ipass"
+		}
+	}
+}
