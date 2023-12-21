@@ -1,21 +1,42 @@
 {
 	"name": "fmcg_Sftp_ls",
 	"properties": {
+		"parameters": {
+			"host_name": {
+				"type": "string",
+				"defaultValue": "192.168.1.104"
+			},
+			"port": {
+				"type": "string",
+				"defaultValue": "22"
+			},
+			"user_name": {
+				"type": "string",
+				"defaultValue": "yogesh.manjunath92@gmail.com"
+			},
+			"secret_name": {
+				"type": "string",
+				"defaultValue": "sftp-pswd"
+			}
+		},
 		"annotations": [],
 		"type": "Sftp",
 		"typeProperties": {
-			"host": "192.168.1.104",
-			"port": 22,
+			"host": "@{linkedService().host_name}",
+			"port": "@linkedService().port",
 			"skipHostKeyValidation": true,
 			"authenticationType": "Basic",
-			"userName": "yogesh.manjunath92@gmail.com",
+			"userName": "@{linkedService().user_name}",
 			"password": {
 				"type": "AzureKeyVaultSecret",
 				"store": {
 					"referenceName": "fmcg_AzureKeyVault_ls",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "sftp-pswd"
+				"secretName": {
+					"value": "@linkedService().secret_name",
+					"type": "Expression"
+				}
 			}
 		},
 		"connectVia": {
