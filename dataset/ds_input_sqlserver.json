@@ -26,7 +26,7 @@
 		"parameters": {
 			"server_name": {
 				"type": "string",
-				"defaultValue": "DESKTOP-MS0L0Q3\\SQLEXPRESS"
+				"defaultValue": "localhost"
 			},
 			"database_name": {
 				"type": "string",
@@ -46,7 +46,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "fact_ts_ipass"
+			"table": "dim_districts"
 		}
 	}
 }
