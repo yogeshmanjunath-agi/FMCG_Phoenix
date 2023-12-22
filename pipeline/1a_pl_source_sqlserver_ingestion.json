@@ -94,10 +94,7 @@
 									"referenceName": "ds_input_sqlserver",
 									"type": "DatasetReference",
 									"parameters": {
-										"server_name": {
-											"value": "@item().server_name",
-											"type": "Expression"
-										},
+										"server_name": "DESKTOP-MS0L0Q3\\SQLEXPRESS",
 										"database_name": {
 											"value": "@item().database_name",
 											"type": "Expression"
