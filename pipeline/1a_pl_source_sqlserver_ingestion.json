@@ -154,7 +154,17 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"notebookPath": "/databricks_notebook/log_record_tbl_insert"
+								"notebookPath": "/databricks_notebook/log_record_tbl_insert",
+								"baseParameters": {
+									"env": {
+										"value": "@pipeline().globalParameters.env",
+										"type": "Expression"
+									},
+									"pipeLineName": {
+										"value": "@pipeline().Pipeline",
+										"type": "Expression"
+									}
+								}
 							},
 							"linkedServiceName": {
 								"referenceName": "fmcg_AzureDatabricks_ls",
