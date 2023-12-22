@@ -46,7 +46,95 @@
 						"value": "@activity('metadata_lookup').output.value",
 						"type": "Expression"
 					},
-					"isSequential": true
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "copy table records",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 2,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "SqlServerSource",
+									"sqlReaderQuery": {
+										"value": "@concat('select * from ',item().source_file_or_table_name)",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "ds_input_sqlserver",
+									"type": "DatasetReference",
+									"parameters": {
+										"server_name": {
+											"value": "@item().server_name",
+											"type": "Expression"
+										},
+										"database_name": {
+											"value": "@item().database_name",
+											"type": "Expression"
+										},
+										"user_name": {
+											"value": "@item().user_name",
+											"type": "Expression"
+										},
+										"secret_name": {
+											"value": "@item().secret_name",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "ds_output_parquet",
+									"type": "DatasetReference",
+									"parameters": {
+										"container_name": {
+											"value": "@item().container_name",
+											"type": "Expression"
+										},
+										"adls_file_path": {
+											"value": "@item().adls_file_path",
+											"type": "Expression"
+										},
+										"table_name": {
+											"value": "@item().source_file_or_table_name",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
 				}
 			}
 		],
