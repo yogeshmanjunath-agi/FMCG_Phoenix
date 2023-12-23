@@ -247,6 +247,25 @@
 								"referenceName": "fmcg_AzureDatabricks_ls",
 								"type": "LinkedServiceReference"
 							}
+						},
+						{
+							"name": "compare records counts",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "copy table records",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@equals(activity('copy table records').output.rowsRead,activity('copy table records').output.rowsCopied)",
+									"type": "Expression"
+								}
+							}
 						}
 					]
 				}
