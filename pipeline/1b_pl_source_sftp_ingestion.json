@@ -28,6 +28,66 @@
 					},
 					"firstRowOnly": false
 				}
+			},
+			{
+				"name": "Get Metadata for source files",
+				"type": "GetMetadata",
+				"dependsOn": [
+					{
+						"activity": "metadata_lookup",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "ds_input_sftp",
+						"type": "DatasetReference",
+						"parameters": {
+							"host_name": {
+								"value": "@activity('metadata_lookup').output.host_name",
+								"type": "Expression"
+							},
+							"port": {
+								"value": "@activity('metadata_lookup').output.port",
+								"type": "Expression"
+							},
+							"user_name": {
+								"value": "@activity('metadata_lookup').output.user_name",
+								"type": "Expression"
+							},
+							"secret_name": {
+								"value": "@activity('metadata_lookup').output.secret_name",
+								"type": "Expression"
+							},
+							"source_file_path": {
+								"value": "@activity('metadata_lookup').output.source_file_path",
+								"type": "Expression"
+							},
+							"file_name": "*"
+						}
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "SftpReadSettings",
+						"enablePartitionDiscovery": false,
+						"disableChunking": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
 			}
 		],
 		"parameters": {

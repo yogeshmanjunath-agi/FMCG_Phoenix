@@ -45,8 +45,7 @@
 				"defaultValue": "sftp_files"
 			},
 			"file_name": {
-				"type": "string",
-				"defaultValue": ".csv"
+				"type": "string"
 			}
 		},
 		"annotations": [],
