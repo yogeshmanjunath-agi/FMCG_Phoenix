@@ -163,6 +163,26 @@
 									"pipeLineName": {
 										"value": "@pipeline().Pipeline",
 										"type": "Expression"
+									},
+									"logMessage": {
+										"value": "@concat('Copied ',item().source_file_or_table_name,' table to adls landing container.')",
+										"type": "Expression"
+									},
+									"status": {
+										"value": "Success",
+										"type": "Expression"
+									},
+									"triggerType": {
+										"value": "@pipeline().TriggerType",
+										"type": "Expression"
+									},
+									"loadId": {
+										"value": "@pipeline().RunId",
+										"type": "Expression"
+									},
+									"logTimeStamp": {
+										"value": "@formatDateTime(convertFromUtc(utcNow(), 'India Standard Time'),'yyyy-MM-dd HH:mm:ss')",
+										"type": "Expression"
 									}
 								}
 							},
