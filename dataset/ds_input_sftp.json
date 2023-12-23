@@ -5,10 +5,22 @@
 			"referenceName": "fmcg_Sftp_ls",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"host_name": "localhost",
-				"port": "22",
-				"user_name": "yogesh.manjunath92@gmail.com",
-				"secret_name": "sftp-pswd"
+				"host_name": {
+					"value": "@dataset().host_name",
+					"type": "Expression"
+				},
+				"port": {
+					"value": "@dataset().port",
+					"type": "Expression"
+				},
+				"user_name": {
+					"value": "@dataset().user_name",
+					"type": "Expression"
+				},
+				"secret_name": {
+					"value": "@dataset().secret_name",
+					"type": "Expression"
+				}
 			}
 		},
 		"parameters": {
@@ -33,7 +45,8 @@
 				"defaultValue": "sftp_files"
 			},
 			"file_name": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": ".csv"
 			}
 		},
 		"annotations": [],
